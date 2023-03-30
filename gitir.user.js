@@ -2,7 +2,7 @@
 // @name         git.ir unleashed
 // @namespace    https://github.com/n-budzinski
 // @version      0.2.1
-// @description  Is stealing from thieves a theft?
+// @description  
 // @author       Norbert Budziński
 // @match        https://en.git.ir/*
 // @match        https://git.ir/*
