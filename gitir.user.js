@@ -1,18 +1,46 @@
 // ==UserScript==
 // @name         git.ir unleashed
 // @namespace    https://github.com/n-budzinski
-// @version      0.2.1
-// @description  
+// @version      0.2.2
+// @description 
 // @author       Norbert Budziński
 // @match        https://en.git.ir/*
 // @match        https://git.ir/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=git.ir
 // @grant        none
+
 // ==/UserScript==
 
 
 (function() {
     'use strict';
+
+// function waitForElm(selector) {
+//     return new Promise(resolve => {
+//         if (document.querySelector(selector)) {
+//             return resolve(document.querySelector(selector));
+//         }
+
+//         const observer = new MutationObserver(mutations => {
+//             if (document.querySelector(selector)) {
+//                 resolve(document.querySelector(selector));
+//                 observer.disconnect();
+//             }
+//         });
+
+//         observer.observe(document.body, {
+//             childList: true,
+//             subtree: true
+//         });
+//     });
+// }
+
+function htmlToElement(html) {
+    var template = document.createElement('template');
+    html = html.trim();
+    template.innerHTML = html;
+    return template.content.firstChild;
+}
 
 window.location.hostname==="git.ir"?window.location.hostname="en.git.ir":null
 
@@ -22,16 +50,10 @@ if(typeof play_item_from_url === "undefined"){
     }
 }
 
-function htmlToElement(html) {
-    var template = document.createElement('template');
-    html = html.trim();
-    template.innerHTML = html;
-    return template.content.firstChild;
-}
-
 if(document.getElementById('main-video')){
+//     waitForElm("video[src*=git]")
     let video_elements = document.getElementsByClassName('video-playlist-item')
-    let link = document.getElementsByTagName('video')[0].player.src.match(/.*\//g)
+    let link = document.getElementsByTagName('video')[0].src.match(/.*\//g)
     let card = document.getElementsByClassName("card-body")[1]
     card.append(htmlToElement(
         `<a class="btn btn-primary btn-link text-light w-100 mb-2" href="` + link + `exercise_files.zip" title="Download" download style="margin-top: 16px"><i class="fa fa-download"></i> Download exercies</a>`
