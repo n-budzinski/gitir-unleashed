@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         git.ir unleashed
 // @namespace    https://github.com/n-budzinski
-// @version      0.2.2
+// @version      0.2.3
 // @description 
 // @author       Norbert Budziński
 // @match        https://en.git.ir/*
@@ -44,11 +44,11 @@ function htmlToElement(html) {
 
 window.location.hostname==="git.ir"?window.location.hostname="en.git.ir":null
 
-if(typeof play_item_from_url === "undefined"){
-    function play_item_from_url(_a, url, _b){
-    document.getElementsByTagName('video')[0].player.src = url
-    }
-}
+// if(typeof play_item_from_url === "undefined"){
+//     function play_item_from_url(_a, url, _b){
+//     document.getElementsByTagName('video')[0].player.src = url
+//     }
+// }
 
 if(document.getElementById('main-video')){
 //     waitForElm("video[src*=git]")
